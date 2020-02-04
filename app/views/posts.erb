@@ -1,0 +1,47 @@
+<h1>Sinatra News</h1>
+
+ <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Post</th>
+      <th scope="col">By</th>
+      <th scope="col">Votes</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @posts.each do |post| %>
+      <tr>
+        <td>
+          <div>
+          <%= link_to post.name, "posts/#{post.id}", class: 'post-link' %>
+          </div>
+          <div>
+          <em >published on <%= pretty_date(post.published_at) %></em>
+          </div>
+        </td>
+        <td>@<%= post.username %></td>
+        <td class="text-right"><%= post.votes %></td>
+        <td>
+          <a href="<%= post.url %>%" target="_blank" class="post-link">
+            <i class="fas fa-external-link-alt"></i>
+          </a>
+          <form action="posts/<%= post.id %>/upvote"
+                method="POST"
+                style="display: inline-block;">
+            <button class="btn">
+              <i class="far fa-thumbs-up"></i>
+            </button>
+          </form>
+          <form action="posts/<%= post.id %>/downvote"
+                method="POST"
+                style="display: inline-block;">
+            <button class="btn">
+              <i class="far fa-thumbs-down"></i>
+            </button>
+          </form>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

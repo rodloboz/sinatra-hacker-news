@@ -1,0 +1,9 @@
+.post-link {
+  underline: inherit;
+  color: inherit;
+}
+
+.post-date {
+  font-weight: light;
+  font-size: 10px;
+}
